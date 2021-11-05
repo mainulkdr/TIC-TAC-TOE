@@ -37,6 +37,20 @@ function checkWinO(){
     }
  }
 
+ function clear(){
+     $(".box").empty();
+     $(".X").removeClass("X")
+     $(".O").removeClass("O")
+ }
+
+ function checkTie(){
+     if($(".X").length + $(".O").length === 9){
+        tie++
+        $("#tie").text(tie)
+        clear()
+
+     }
+ }
 
 
 
@@ -49,6 +63,10 @@ $(".box").click(function(){
         if(checkWinX()){
             p1Score++
             $("#p1-score").text(p1Score)
+            clear()
+        }
+        else{
+            checkTie()
         }
 
         
@@ -62,6 +80,10 @@ $(".box").click(function(){
         if(checkWinO()){
             p2Score++
             $("#p2-score").text(p2Score)
+            clear()
+        }
+        else{
+            checkTie()
         }
     }
 })

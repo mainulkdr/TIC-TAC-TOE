@@ -43,14 +43,14 @@ var turn = 1;
 //      $(".O").removeClass("O")
 //  }
 
- function checkTie(){
-     if($(".X").length + $(".O").length === 9){
-        tie++
-        $("#tie").text(tie)
-        clear()
+//  function checkTie(){
+//      if($(".X").length + $(".O").length === 9){
+//         tie++
+//         $("#tie").text(tie)
+//         clear()
 
-     }
- }
+//      }
+//  }
 
 
 
@@ -136,7 +136,15 @@ function checkWin(symbol){
             && document.getElementById("5").innerHTML === symbol
             && document.getElementById("7").innerHTML === symbol
     );       
- }
+}
+
+function checkTie(){
+    if( document.querySelectorAll(".X").length +  document.querySelectorAll(".O").length === 9){
+        tie++
+        document.getElementById("tie").innerHTML = tie;
+        clear()
+    }
+}
 
 function boxClick(item) {
     if (turn ===1 ){
@@ -149,9 +157,9 @@ function boxClick(item) {
             document.getElementById("p1-score").innerHTML = p1Score;
             clear()
         }
-        // else{
-        //     checkTie()
-        // }
+        else{
+            checkTie()
+        }
     }
     else
     {
@@ -165,8 +173,8 @@ function boxClick(item) {
             document.getElementById("p2-score").innerHTML = p2Score;
             clear()
         }
-        // else{
-        //     checkTie()
-        // }
+        else{
+            checkTie()
+        }
     }
 }
